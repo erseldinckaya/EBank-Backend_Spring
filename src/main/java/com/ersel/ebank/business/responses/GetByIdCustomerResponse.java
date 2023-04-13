@@ -15,4 +15,5 @@ public class GetByIdCustomerResponse {
     private String address;
     private String mail;
     private int creditPoint;
+    private String password;
 }
