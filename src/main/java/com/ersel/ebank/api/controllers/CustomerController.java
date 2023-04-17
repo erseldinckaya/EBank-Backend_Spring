@@ -5,6 +5,7 @@ import com.ersel.ebank.business.requests.CreateCustomerRequest;
 import com.ersel.ebank.business.requests.UpdateCustomerRequest;
 import com.ersel.ebank.business.responses.GetByIdCustomerResponse;
 import com.ersel.ebank.business.responses.GetCustomerByMailResponse;
+import com.ersel.ebank.entities.concretes.Customer;
 import com.ersel.ebank.utilities.results.Result;
 import com.ersel.ebank.utilities.results.SuccessDataResult;
 import lombok.AllArgsConstructor;
@@ -17,9 +18,13 @@ public class CustomerController {
 
     private CustomerService customerService;
 
+//    @PostMapping("/add")
+//    public Result add(@RequestBody CreateCustomerRequest request){
+//        return this.customerService.add(request);
+//    }
     @PostMapping("/add")
-    public Result add(@RequestBody CreateCustomerRequest request){
-        return this.customerService.add(request);
+    public String add(@RequestBody Customer customer){
+        return this.customerService.add(customer);
     }
     @PutMapping("/update")
     public Result update(@RequestBody UpdateCustomerRequest request){ return this.customerService.update(request);}

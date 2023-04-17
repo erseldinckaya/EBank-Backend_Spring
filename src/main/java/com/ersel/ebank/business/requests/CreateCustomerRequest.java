@@ -35,4 +35,6 @@ public class CreateCustomerRequest {
     @NotNull
     @NotBlank
     private String password;
+
+    private String role;
 }

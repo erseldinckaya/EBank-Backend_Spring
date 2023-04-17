@@ -13,6 +13,7 @@ import com.ersel.ebank.utilities.results.Result;
 import com.ersel.ebank.utilities.results.SuccessDataResult;
 import com.ersel.ebank.utilities.results.SuccessResult;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @AllArgsConstructor
@@ -22,15 +23,25 @@ public class CustomerManager implements CustomerService {
     private CustomerDao customerDao;
     private ModelMapperService modelMapperService;
     private CustomerBusinessRules customerBusinessRules;
+    private PasswordEncoder passwordEncoder;
+
+//    @Override
+//    public Result add(CreateCustomerRequest request) {
+//        //Rules
+//        this.customerBusinessRules.checkIfCustomerMailExists(request.getMail());
+//
+//        Customer customer = this.modelMapperService.forRequest().map(request, Customer.class);
+//        customer.setPassword(passwordEncoder.encode(customer.getPassword()));
+//        this.customerDao.save(customer);
+//        return new SuccessResult("Kullanıcı başarıyla eklendi !");
+//    }
+
 
     @Override
-    public Result add(CreateCustomerRequest request) {
-        //Rules
-        this.customerBusinessRules.checkIfCustomerMailExists(request.getMail());
-
-        Customer customer = this.modelMapperService.forRequest().map(request, Customer.class);
+    public String add(Customer customer) {
+        customer.setPassword(passwordEncoder.encode(customer.getPassword()));
         this.customerDao.save(customer);
-        return new SuccessResult("Kullanıcı başarıyla eklendi !");
+        return "Kullanıcı eklendi !";
     }
 
     @Override

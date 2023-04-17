@@ -31,4 +31,8 @@ public class Customer {
     private int creditPoint;
     @Column(name = "customer_password")
     private String password;
+    @Column(name = "customer_username")
+    private String username;
+    @Column(name = "customer_role")
+    private String role;
 }
