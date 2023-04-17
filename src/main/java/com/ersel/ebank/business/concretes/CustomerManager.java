@@ -5,6 +5,7 @@ import com.ersel.ebank.business.requests.CreateCustomerRequest;
 import com.ersel.ebank.business.requests.UpdateCustomerRequest;
 import com.ersel.ebank.business.responses.GetByIdCustomerResponse;
 import com.ersel.ebank.business.responses.GetCustomerByMailResponse;
+import com.ersel.ebank.business.rules.CustomerBusinessRules;
 import com.ersel.ebank.dataAccess.abstracts.CustomerDao;
 import com.ersel.ebank.entities.concretes.Customer;
 import com.ersel.ebank.utilities.mappers.ModelMapperService;
@@ -20,9 +21,13 @@ public class CustomerManager implements CustomerService {
 
     private CustomerDao customerDao;
     private ModelMapperService modelMapperService;
+    private CustomerBusinessRules customerBusinessRules;
 
     @Override
     public Result add(CreateCustomerRequest request) {
+        //Rules
+        this.customerBusinessRules.checkIfCustomerMailExists(request.getMail());
+
         Customer customer = this.modelMapperService.forRequest().map(request, Customer.class);
         this.customerDao.save(customer);
         return new SuccessResult("Kullanıcı başarıyla eklendi !");
@@ -30,6 +35,9 @@ public class CustomerManager implements CustomerService {
 
     @Override
     public Result update(UpdateCustomerRequest request) {
+        //Rules
+        this.customerBusinessRules.checkIfCustomerMailExists(request.getMail());
+
         Customer customer = this.modelMapperService.forRequest().map(request, Customer.class);
         this.customerDao.save(customer);
         return new SuccessResult("Kullanıcı başarıyla güncellendi !");

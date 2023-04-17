@@ -4,7 +4,6 @@ import com.ersel.ebank.business.requests.CreateCustomerRequest;
 import com.ersel.ebank.business.requests.UpdateCustomerRequest;
 import com.ersel.ebank.business.responses.GetByIdCustomerResponse;
 import com.ersel.ebank.business.responses.GetCustomerByMailResponse;
-import com.ersel.ebank.entities.concretes.Customer;
 import com.ersel.ebank.utilities.results.Result;
 import com.ersel.ebank.utilities.results.SuccessDataResult;
 
