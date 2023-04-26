@@ -37,11 +37,19 @@ public class CustomerManager implements CustomerService {
 //    }
 
 
+//    @Override
+//    public String add(Customer customer) {
+//        customer.setPassword(passwordEncoder.encode(customer.getPassword()));
+//        this.customerDao.save(customer);
+//        return "Kullanıcı eklendi !";
+//    }
+
     @Override
-    public String add(Customer customer) {
-        customer.setPassword(passwordEncoder.encode(customer.getPassword()));
+    public SuccessResult add(CreateCustomerRequest request) {
+        Customer customer = this.modelMapperService.forRequest().map(request, Customer.class);
+        customer.setPassword(passwordEncoder.encode(request.getPassword()));
         this.customerDao.save(customer);
-        return "Kullanıcı eklendi !";
+        return new SuccessResult("Your registration has been successful. You can access it from the login page !");
     }
 
     @Override
