@@ -5,6 +5,7 @@ import com.ersel.ebank.business.requests.CreateCustomerRequest;
 import com.ersel.ebank.business.requests.UpdateCustomerRequest;
 import com.ersel.ebank.business.responses.GetByIdCustomerResponse;
 import com.ersel.ebank.business.responses.GetCustomerByMailResponse;
+import com.ersel.ebank.business.responses.GetCustomerByUsernameResponse;
 import com.ersel.ebank.business.rules.CustomerBusinessRules;
 import com.ersel.ebank.dataAccess.abstracts.CustomerDao;
 import com.ersel.ebank.entities.concretes.Customer;
@@ -75,5 +76,12 @@ public class CustomerManager implements CustomerService {
         Customer customer = this.customerDao.findCustomerByMail(mail);
         GetCustomerByMailResponse response = this.modelMapperService.forResponse().map(customer, GetCustomerByMailResponse.class);
         return new SuccessDataResult<>(response,"Müşteri Bulundu !");
+    }
+
+    @Override
+    public SuccessDataResult<GetCustomerByUsernameResponse> findByUsername(String username) {
+        Customer customer = this.customerDao.getCustomerByUsername(username);
+        GetCustomerByUsernameResponse response = this.modelMapperService.forResponse().map(customer, GetCustomerByUsernameResponse.class);
+        return new SuccessDataResult<>(response);
     }
 }

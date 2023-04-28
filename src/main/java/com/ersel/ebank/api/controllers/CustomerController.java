@@ -5,6 +5,7 @@ import com.ersel.ebank.business.requests.CreateCustomerRequest;
 import com.ersel.ebank.business.requests.UpdateCustomerRequest;
 import com.ersel.ebank.business.responses.GetByIdCustomerResponse;
 import com.ersel.ebank.business.responses.GetCustomerByMailResponse;
+import com.ersel.ebank.business.responses.GetCustomerByUsernameResponse;
 import com.ersel.ebank.utilities.results.Result;
 import com.ersel.ebank.utilities.results.SuccessDataResult;
 import com.ersel.ebank.utilities.results.SuccessResult;
@@ -33,4 +34,6 @@ public class CustomerController {
     public SuccessDataResult<GetByIdCustomerResponse> findById(@RequestParam int id){return this.customerService.findById(id);}
     @GetMapping("/getByMail")
     public SuccessDataResult<GetCustomerByMailResponse> findByMail(@RequestParam String mail){return this.customerService.findByMail(mail);}
+    @GetMapping("/getByUsername")
+    public SuccessDataResult<GetCustomerByUsernameResponse> findByUsername(@RequestParam String username) {return this.customerService.findByUsername(username);}
 }

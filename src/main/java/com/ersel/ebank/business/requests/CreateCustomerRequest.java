@@ -39,4 +39,7 @@ public class CreateCustomerRequest {
     @NotNull
     @NotBlank
     private String username;
+    @NotNull
+    @NotBlank
+    private String role;
 }

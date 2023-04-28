@@ -47,6 +47,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests((authz) -> authz
                         .antMatchers("/api/pages/admin").hasRole("ADMIN")
                         .antMatchers("/api/pages/user").hasRole("USER")
+                        .antMatchers("/api/auth").permitAll()
 
                 ).sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
