@@ -33,8 +33,5 @@ public class UpdateCustomerRequest {
     private String mail;
     @NotNull
     @NotBlank
-    private int creditPoint;
-    @NotNull
-    @NotBlank
-    private String password;
+    private String username;
 }
