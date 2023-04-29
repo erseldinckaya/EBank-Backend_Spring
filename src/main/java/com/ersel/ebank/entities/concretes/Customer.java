@@ -5,7 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import java.util.List;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -35,4 +36,6 @@ public class Customer {
     private String username;
     @Column(name = "customer_role")
     private String role;
+//    @OneToMany(mappedBy = "customer")
+//    private List<DebitAccount> cards;
 }
