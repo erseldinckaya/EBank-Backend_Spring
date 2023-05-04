@@ -3,14 +3,11 @@ package com.ersel.ebank.business.concretes;
 
 import com.ersel.ebank.business.abstracts.DebitAccountService;
 import com.ersel.ebank.business.requests.CreateDebitAccountRequest;
-import com.ersel.ebank.business.responses.GetDebitAccountsByCustomerIdResponse;
 import com.ersel.ebank.dataAccess.abstracts.DebitAccountDao;
 import com.ersel.ebank.entities.concretes.DebitAccount;
 import com.ersel.ebank.utilities.mappers.ModelMapperService;
-import com.ersel.ebank.utilities.results.SuccessDataResult;
 import com.ersel.ebank.utilities.results.SuccessResult;
 import lombok.AllArgsConstructor;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -81,6 +78,11 @@ public class DebitAccountManager implements DebitAccountService {
     @Override
     public List<DebitAccount> getDebitsByCustomerId(int id) {
         return this.debitAccountDao.getDebitAccountByCustomer_CustomerId(id);
+    }
+
+    @Override
+    public DebitAccount getDebitAccountByAccountId(int id) {
+        return this.debitAccountDao.getDebitAccountByAccountId(id);
     }
 
     @Override

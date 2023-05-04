@@ -2,9 +2,7 @@ package com.ersel.ebank.api.controllers;
 
 import com.ersel.ebank.business.abstracts.DebitAccountService;
 import com.ersel.ebank.business.requests.CreateDebitAccountRequest;
-import com.ersel.ebank.business.responses.GetDebitAccountsByCustomerIdResponse;
 import com.ersel.ebank.entities.concretes.DebitAccount;
-import com.ersel.ebank.utilities.results.SuccessDataResult;
 import com.ersel.ebank.utilities.results.SuccessResult;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +29,9 @@ public class DebitAccountsController {
     public List<DebitAccount> getDebitsByCustomerId(@RequestParam int id){
         return this.debitAccountService.getDebitsByCustomerId(id);
     }
+
+    @GetMapping("/getDebitAccountByAccountId")
+    DebitAccount getDebitAccountByAccountId(@RequestParam int id){ return this.debitAccountService.getDebitAccountByAccountId(id);}
 
     @DeleteMapping("/delete")
     public SuccessResult deleteDebitCard(int id) {
