@@ -48,28 +48,27 @@ public class DebitTransactionManager implements DebitTransactionService {
         } else {
             target.setBalance(target.getBalance() + request.getAmount());
             main.setBalance(main.getBalance() - request.getAmount());
+
+            DebitTransaction reverse = new DebitTransaction();
+
+            reverse.setTransactionDate(formattedDateTime);
+            reverse.setAccountId(target);
+            reverse.setDestinationId(main.getAccountId());
+            if (request.getTypeId().getTypeId() == 1){
+                TransactionType type = this.typeDao.findTransactionTypeByTypeId(2);
+                reverse.setTypeId(type);
+            } else {
+                TransactionType type = this.typeDao.findTransactionTypeByTypeId(1);
+                reverse.setTypeId(type);
+            }
+            reverse.setTransactionName(request.getTransactionName());
+            reverse.setAmount(request.getAmount());
+
+            this.transactionDao.save(reverse);
+
         }
 
         this.transactionDao.save(request);
-
-
-        DebitTransaction reverse = new DebitTransaction();
-
-        reverse.setTransactionDate(formattedDateTime);
-        reverse.setAccountId(target);
-        reverse.setDestinationId(main.getAccountId());
-        if (request.getTypeId().getTypeId() == 1){
-            TransactionType type = this.typeDao.findTransactionTypeByTypeId(2);
-            reverse.setTypeId(type);
-        } else {
-            TransactionType type = this.typeDao.findTransactionTypeByTypeId(1);
-            reverse.setTypeId(type);
-        }
-        reverse.setTransactionName(request.getTransactionName());
-        reverse.setAmount(request.getAmount());
-
-        this.transactionDao.save(reverse);
-
 
         return new SuccessResult("Transaction is created !");
     }
