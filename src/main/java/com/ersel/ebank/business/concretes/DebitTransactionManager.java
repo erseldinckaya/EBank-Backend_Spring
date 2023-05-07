@@ -1,6 +1,7 @@
 package com.ersel.ebank.business.concretes;
 
 import com.ersel.ebank.business.abstracts.DebitTransactionService;
+import com.ersel.ebank.business.rules.TransactionBusinessRules;
 import com.ersel.ebank.dataAccess.abstracts.DebitAccountDao;
 import com.ersel.ebank.dataAccess.abstracts.DebitTransactionDao;
 import com.ersel.ebank.dataAccess.abstracts.TransactionTypeDao;
@@ -24,6 +25,7 @@ public class DebitTransactionManager implements DebitTransactionService {
     //private ModelMapperService modelMapperService;
 
     private TransactionTypeDao typeDao;
+    private TransactionBusinessRules businessRules;
 
     @Override
     public SuccessResult add(DebitTransaction request) {
@@ -43,9 +45,11 @@ public class DebitTransactionManager implements DebitTransactionService {
             if (request.getTypeId().getTypeId() == 1){
                 target.setBalance(target.getBalance() + request.getAmount());
             } else {
+                businessRules.checkIfBalanceLessZero(target.getBalance(), request.getAmount());
                 target.setBalance(target.getBalance() - request.getAmount());
             }
         } else {
+            businessRules.checkIfBalanceLessZero(main.getBalance(), request.getAmount());
             target.setBalance(target.getBalance() + request.getAmount());
             main.setBalance(main.getBalance() - request.getAmount());
 
