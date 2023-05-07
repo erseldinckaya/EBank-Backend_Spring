@@ -8,4 +8,5 @@ import java.util.List;
 public interface DebitTransactionDao extends JpaRepository<DebitTransaction, Integer> {
     List<DebitTransaction> findDebitTransactionByAccountId_AccountId(int id);
     List<DebitTransaction> findDebitTransactionsByDestinationId(int id);
+    List<DebitTransaction> findDebitTransactionsByAccountId_AccountIdAndTypeId_TypeId(int accountId, int typeId);
 }
