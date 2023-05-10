@@ -45,8 +45,10 @@ public class SecurityConfig {
         http.csrf().disable();
         return http
                 .authorizeHttpRequests((authz) -> authz
-                        .antMatchers("/api/pages/admin").hasRole("ADMIN")
-                        .antMatchers("/api/pages/user").hasRole("USER")
+                        .antMatchers("/api/cardvalue").hasRole("ROLE_USER")
+                        .antMatchers("/api/accounts/debit").hasRole("ROLE_USER")
+                        .antMatchers("/api/accounts/transaction").hasRole("ROLE_USER")
+                        .antMatchers("/api/transactions/type").hasRole("ROLE_USER")
                         .antMatchers("/api/auth").permitAll()
 
                 ).sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
