@@ -10,6 +10,7 @@ public interface DebitAccountService {
     SuccessResult add(CreateDebitAccountRequest request);
     List<DebitAccount> getDebitsByCustomerId(int id);
     DebitAccount getDebitAccountByAccountId(int id);
+    DebitAccount getDebitAccountByCardNumber(String cardNumber);
     List<DebitAccount> getCards();
     SuccessResult deleteDebitCard(int id);
 }

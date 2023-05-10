@@ -86,6 +86,11 @@ public class DebitAccountManager implements DebitAccountService {
     }
 
     @Override
+    public DebitAccount getDebitAccountByCardNumber(String cardNumber) {
+        return this.debitAccountDao.getDebitAccountByCardNumber(cardNumber);
+    }
+
+    @Override
     public List<DebitAccount> getCards() {
         return this.debitAccountDao.findAll();
     }

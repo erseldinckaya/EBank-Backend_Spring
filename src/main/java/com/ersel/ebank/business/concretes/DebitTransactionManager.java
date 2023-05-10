@@ -8,7 +8,6 @@ import com.ersel.ebank.dataAccess.abstracts.TransactionTypeDao;
 import com.ersel.ebank.entities.concretes.DebitAccount;
 import com.ersel.ebank.entities.concretes.DebitTransaction;
 import com.ersel.ebank.entities.concretes.TransactionType;
-import com.ersel.ebank.utilities.mappers.ModelMapperService;
 import com.ersel.ebank.utilities.results.SuccessResult;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

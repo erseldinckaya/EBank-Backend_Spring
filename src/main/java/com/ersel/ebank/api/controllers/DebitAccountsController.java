@@ -33,6 +33,9 @@ public class DebitAccountsController {
     @GetMapping("/getDebitAccountByAccountId")
     DebitAccount getDebitAccountByAccountId(@RequestParam int id){ return this.debitAccountService.getDebitAccountByAccountId(id);}
 
+    @GetMapping("/getDebitAccountByCardNumber")
+    DebitAccount getDebitAccountByCardNumber(@RequestParam String cardNumber){ return this.debitAccountService.getDebitAccountByCardNumber(cardNumber);}
+
     @DeleteMapping("/delete")
     public SuccessResult deleteDebitCard(int id) {
         return this.debitAccountService.deleteDebitCard(id);

@@ -8,4 +8,5 @@ import java.util.List;
 public interface DebitAccountDao extends JpaRepository<DebitAccount, Integer> {
     List<DebitAccount> getDebitAccountByCustomer_CustomerId(int id);
     DebitAccount getDebitAccountByAccountId(int id);
+    DebitAccount getDebitAccountByCardNumber(String cardNumber);
 }
