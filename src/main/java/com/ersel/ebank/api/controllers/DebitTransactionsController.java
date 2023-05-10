@@ -26,4 +26,7 @@ public class DebitTransactionsController {
 
     @GetMapping("/getByDestinationId")
     List<DebitTransaction> getByDestinationId(@RequestParam int id){return this.debitTransactionService.getByDestinationId(id);}
+
+    @GetMapping("/getByCustomerId")
+    List<DebitTransaction> getByCustomerId(@RequestParam int customerId){return this.debitTransactionService.getByCustomerId(customerId);}
 }

@@ -10,4 +10,5 @@ public interface DebitTransactionDao extends JpaRepository<DebitTransaction, Int
     List<DebitTransaction> findDebitTransactionsByDestinationId(int id);
     List<DebitTransaction> findDebitTransactionsByAccountId_AccountIdAndTypeId_TypeId(int accountId, int typeId);
     List<DebitTransaction> findDebitTransactionsByAccountId_Customer_CustomerIdAndTypeId_TypeId(int customerId, int typeId);
+    List<DebitTransaction> findDebitTransactionsByAccountId_Customer_CustomerId(int customerId);
 }

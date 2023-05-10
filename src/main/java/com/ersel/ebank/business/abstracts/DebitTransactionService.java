@@ -11,4 +11,5 @@ public interface DebitTransactionService {
     List<DebitTransaction> getByAccountId(int id);
     List<DebitTransaction> getByDestinationId(int id);
     List<DebitTransaction> getByCustomerIdAndTypeId(int customerId, int typeId);
+    List<DebitTransaction> getByCustomerId(int customerId);
 }
