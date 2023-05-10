@@ -93,4 +93,10 @@ public class DebitTransactionManager implements DebitTransactionService {
         List<DebitTransaction> getbyDestinationList = this.transactionDao.findDebitTransactionsByDestinationId(id);
         return getbyDestinationList;
     }
+
+    @Override
+    public List<DebitTransaction> getByCustomerIdAndTypeId(int customerId, int typeId) {
+        List<DebitTransaction> getByCustomerIdList = this.transactionDao.findDebitTransactionsByAccountId_Customer_CustomerIdAndTypeId_TypeId(customerId, typeId);
+        return getByCustomerIdList;
+    }
 }

@@ -4,4 +4,5 @@ import com.ersel.ebank.business.responses.GetCardValuesResponse;
 
 public interface CardValuesService {
     GetCardValuesResponse getValues(int id);
+    GetCardValuesResponse getValuesByCustomerId(int customerId);
 }

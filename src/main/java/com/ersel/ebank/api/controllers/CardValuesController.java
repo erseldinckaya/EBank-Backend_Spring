@@ -16,4 +16,9 @@ public class CardValuesController {
     public GetCardValuesResponse getById(@RequestParam int id){
         return this.cardValuesService.getValues(id);
     }
+
+    @GetMapping("/getByCustomerId")
+    public GetCardValuesResponse getByCustomerId(@RequestParam int customerId){
+        return this.cardValuesService.getValuesByCustomerId(customerId);
+    }
 }

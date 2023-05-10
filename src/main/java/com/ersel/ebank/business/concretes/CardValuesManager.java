@@ -40,4 +40,31 @@ public class CardValuesManager implements CardValuesService {
 
         return response;
     }
+
+    @Override
+    public GetCardValuesResponse getValuesByCustomerId(int customerId) {
+        List<DebitTransaction> incomeList = this.transactionDao.findDebitTransactionsByAccountId_Customer_CustomerIdAndTypeId_TypeId(customerId, 1);
+        int incomes = 0;
+        for (DebitTransaction item : incomeList) {
+            incomes += item.getAmount();
+        }
+        List<DebitTransaction> expenseList = this.transactionDao.findDebitTransactionsByAccountId_Customer_CustomerIdAndTypeId_TypeId(customerId, 2);
+        int expenses = 0;
+        for (DebitTransaction item : expenseList) {
+            expenses += item.getAmount();
+        }
+        int balance = incomes - expenses;
+        GetCardValuesResponse response = new GetCardValuesResponse();
+        response.setBalance(balance);
+        response.setExpenses(expenses);
+        response.setIncomes(incomes);
+
+        if (balance > 0){
+            response.setStatus(true);
+        } else {
+            response.setStatus(false);
+        }
+
+        return response;
+    }
 }
